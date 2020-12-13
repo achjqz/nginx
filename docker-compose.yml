@@ -2,11 +2,15 @@ version: "3.9"
 services:
   web:
     image: nginx 
+    container_name: my-nginx
     ports:
       - "80:80"
       - "443:443"
     volumes:
-      - /etc/letsencrypt/live/music.xhyh.site/:/etc/nginx/cert/music/
-      - ./nginx-data/nginx.conf:/etc/ngnix/nginx.conf
-      - ./nginx-data/dhparams.pem:/etc/ngnix/dhparams.pem
+      - /etc/letsencrypt/live/music.xhyh.site/fullchain.pem:/etc/nginx/certs/music/fullchain.pem:ro
+      - /etc/letsencrypt/live/music.xhyh.site/chain.pem:/etc/nginx/certs/music/chain.pem:ro
+      - /etc/letsencrypt/live/music.xhyh.site/privkey.pem:/etc/nginx/certs/music/privkey.pem:ro
+      - ./nginx-data/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx-data/music.conf:/etc/nginx/conf.d/music.conf:ro
+      - ./nginx-data/dhparams.pem:/etc/nginx/dhparams.pem:ro
     restart: always
