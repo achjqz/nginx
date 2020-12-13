@@ -1,0 +1,12 @@
+version: "3.9"
+services:
+  web:
+    image: nginx 
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /etc/letsencrypt/live/music.xhyh.site/:/etc/nginx/cert/music/
+      - ./nginx-data/nginx.conf:/etc/ngnix/nginx.conf
+      - ./nginx-data/dhparams.pem:/etc/ngnix/dhparams.pem
+    restart: always
