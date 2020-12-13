@@ -1,0 +1,20 @@
+version: "3.9"
+services:
+  music:
+    image: p3terx/unblockneteasemusic 
+    container_name: unblock
+    environment:
+      NODE_ENV: production
+    ports:
+      - "7777:8080"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "1m"
+    restart: unless-stopped
+    command: -s -e https://music.xhyh.site
+
+networks:
+  default:
+    external:
+      name: webproxy   

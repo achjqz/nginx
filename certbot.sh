@@ -4,4 +4,4 @@ certbot certonly \
   --dns-cloudflare-propagation-seconds 60 \
   -d example.com
 
-  sudo certbot renew --dry-run
+sudo certbot renew --dry-run
