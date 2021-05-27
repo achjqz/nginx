@@ -1,7 +1,7 @@
 version: "3.9"
 services:
   music:
-    image: p3terx/unblockneteasemusic 
+    image: colinxkl/unblock-netease-music 
     container_name: unblock
     environment:
       NODE_ENV: production
